@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +21,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=500;600;700;800&family=Inter:wght=400;500;600&display=swap" rel="stylesheet">
  
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -48,10 +47,17 @@
         </ul>
       </nav>
  
-      <a href="assets/resume.pdf" class="btn btn-primary btn-small" download aria-label="Download Ayusman Pradhan's resume as PDF">
-        <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v13m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
-        Resume
-      </a>
+      <!-- Global Controls Container -->
+      <div class="header-actions">
+        <div class="theme-switcher-group" role="group" aria-label="Theme Selection">
+          <button id="theme-light-btn" class="theme-opt-btn" aria-label="Switch to Light Theme">☀️ Light</button>
+          <button id="theme-dark-btn" class="theme-opt-btn" aria-label="Switch to Dark Theme">🌙 Dark</button>
+        </div>
+        <a href="assets/resume.pdf" class="btn btn-primary btn-small" download aria-label="Download Ayusman Pradhan's resume as PDF">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v13m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+          Resume
+        </a>
+      </div>
     </div>
   </header>
  
@@ -159,24 +165,28 @@
       <div class="container">
         <h2 id="projects-heading"><span aria-hidden="true">📁</span> Projects</h2>
         <div class="projects-grid">
+          
           <article class="project-card">
             <div class="project-icon icon-pink" aria-hidden="true">💻</div>
             <h3>Portfolio Website</h3>
-            <p>A personal portfolio website built using HTML and CSS to showcase my skills, projects and achievements.</p>
+            <p>A personal portfolio website built using advanced grid layouts, multi-theme variable state configurations, and clean semantic elements to showcase my engineering skills.</p>
             <a href="#" class="project-link">View Project →</a>
           </article>
-          <article class="project-card">
-            <div class="project-icon icon-green" aria-hidden="true">🛒</div>
+          
+          <article class="project-card draft-card">
+            <div class="project-icon" aria-hidden="true">⏳</div>
             <h3>E-Commerce Landing Page</h3>
-            <p>A responsive e-commerce landing page built using HTML, CSS and clean UI components.</p>
-            <a href="#" class="project-link">View Project →</a>
+            <p>Next up in development sequence. Building an advanced product storefront utilizing component systems.</p>
+            <span class="status-badge">Coming Soon</span>
           </article>
-          <article class="project-card">
-            <div class="project-icon icon-orange" aria-hidden="true">🧮</div>
+          
+          <article class="project-card draft-card">
+            <div class="project-icon" aria-hidden="true">⏳</div>
             <h3>Simple Calculator</h3>
-            <p>A basic calculator application built using HTML, CSS and JavaScript for performing arithmetic operations.</p>
-            <a href="#" class="project-link">View Project →</a>
+            <p>Basic front-end processing application designed to compute expressions seamlessly inside viewports.</p>
+            <span class="status-badge">Coming Soon</span>
           </article>
+          
         </div>
       </div>
     </section>
@@ -233,4 +243,3 @@
   <script src="js/script.js"></script>
 </body>
 </html>
- 
