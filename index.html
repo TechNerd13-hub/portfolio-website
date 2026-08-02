@@ -6,7 +6,7 @@
  
   <!-- SEO Meta Tags -->
   <title>Ayusman Pradhan | Computer Science Engineering Student & Web Developer</title>
-  <meta name="description" content="Portfolio of Ayusman Pradhan, a Computer Science Engineering student and Web Development Intern at Thiranex. Explore projects, skills in HTML5, CSS3, JavaScript and Python.">
+  <meta name="description" content="Portfolio of Ayusman Pradhan, a Computer Science Engineering student and Web Developer. Explore projects, certifications, and technical skills.">
   <meta name="keywords" content="Ayusman Pradhan, portfolio, web developer, computer science student, front-end developer, HTML CSS JavaScript, Bhubaneswar">
   <meta name="author" content="Ayusman Pradhan">
   <link rel="canonical" href="https://ayusmanpradhan.dev/">
@@ -14,7 +14,7 @@
   <!-- Open Graph / Social sharing -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Ayusman Pradhan | Computer Science Engineering Student & Web Developer">
-  <meta property="og:description" content="Portfolio showcasing projects, skills and experience of Ayusman Pradhan, a CSE student and Web Development Intern.">
+  <meta property="og:description" content="Portfolio showcasing projects, skills, certifications, and experience of Ayusman Pradhan.">
   <meta property="og:image" content="images/profile.jpeg">
   <meta name="twitter:card" content="summary_large_image">
  
@@ -24,6 +24,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=500;600;700;800&family=Inter:wght=400;500;600&display=swap" rel="stylesheet">
  
   <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Animate On Scroll (AOS) Library for Scroll Animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
  
@@ -42,7 +45,9 @@
           <li><a href="#home" class="nav-link active" aria-current="page">Home</a></li>
           <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
           <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#certifications" class="nav-link">Certifications</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </nav>
@@ -66,11 +71,11 @@
     <!-- ============ HERO ============ -->
     <section id="home" class="hero" aria-labelledby="hero-heading">
       <div class="container hero-grid">
-        <div class="hero-text">
+        <div class="hero-text fade-in-up">
           <p class="eyebrow">👋 Hello, I'm</p>
           <h1 id="hero-heading">Ayusman <span class="text-accent">Pradhan</span></h1>
           <p class="role">Computer Science Engineering Student</p>
-          <p class="badge">Web Development Intern @ Thiranex</p>
+          
           <p class="lede">Passionate about building responsive websites, learning modern web technologies, and creating practical software solutions through continuous learning and hands-on projects.</p>
  
           <div class="hero-actions">
@@ -91,49 +96,52 @@
             <li><a href="https://linkedin.com/" aria-label="Ayusman Pradhan on LinkedIn" target="_blank" rel="noopener noreferrer">
               <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
               LinkedIn</a></li>
-            <li><a href="mailto:ayusmanpradhan06@gmail.com" aria-label="Email Ayusman Pradhan">
+            <li><a href="mailto:ayusmanpradhan1306@gmail.com" aria-label="Email Ayusman Pradhan">
               <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg>
               Email</a></li>
           </ul>
         </div>
  
-        <div class="hero-media">
+        <div class="hero-media fade-in-zoom">
           <figure class="profile-frame">
-            <img src="images/profile.jpeg" alt="Portrait photo of Ayusman Pradhan" width="360" height="360" loading="eager">
+            <img src="images/profile.jpeg" alt="Portrait photo of Ayusman Pradhan" width="360" height="360" loading="eager" class="profile-img-circle">
           </figure>
         </div>
       </div>
     </section>
  
     <!-- ============ ABOUT ============ -->
-    <section id="about" class="section section-alt" aria-labelledby="about-heading">
+    <section id="about" class="section section-alt" aria-labelledby="about-heading" data-aos="fade-up">
       <div class="container">
         <h2 id="about-heading"><span class="icon-badge" aria-hidden="true">👤</span> About Me</h2>
-        <p class="section-text">I am a Computer Science Engineering student who loves turning ideas into real-world projects. I enjoy solving problems, building clean and responsive web interfaces, and continuously improving my skills in development.</p>
+        <p class="section-text">
+          I am a Computer Science Engineering student passionate about turning innovative ideas into real-world projects. Beyond coding and technical problem solving, I pride myself on strong <strong>public speaking, communication, and interpersonal skills</strong>. I thrive in collaborative environments where I can communicate technical concepts clearly, lead discussions, and deliver ideas with confidence and impact.
+        </p>
       </div>
     </section>
  
     <!-- ============ SKILLS ============ -->
-    <section id="skills" class="section" aria-labelledby="skills-heading">
+    <section id="skills" class="section" aria-labelledby="skills-heading" data-aos="fade-up">
       <div class="container">
-        <h2 id="skills-heading" class="text-center">Technical Skills</h2>
+        <h2 id="skills-heading" class="text-center">Technical & Soft Skills</h2>
         <ul class="skills-grid" role="list">
           <li class="skill-card"><span class="skill-icon" style="color:#e34f26" aria-hidden="true">&lt;/&gt;</span>HTML5</li>
           <li class="skill-card"><span class="skill-icon" style="color:#1572b6" aria-hidden="true">#</span>CSS3</li>
-          <li class="skill-card"><span class="skill-icon" style="color:#f7df1e" aria-hidden="true">JS</span>JavaScript <em>(Learning)</em></li>
+          <li class="skill-card"><span class="skill-icon" style="color:#f7df1e" aria-hidden="true">JS</span>JavaScript</li>
           <li class="skill-card"><span class="skill-icon" style="color:#3776ab" aria-hidden="true">Py</span>Python</li>
-          <li class="skill-card"><span class="skill-icon" style="color:#092e20" aria-hidden="true">Dj</span>Django <em>(Learning)</em></li>
+          <li class="skill-card"><span class="skill-icon" style="color:#092e20" aria-hidden="true">Dj</span>Django</li>
           <li class="skill-card"><span class="skill-icon" style="color:#f05032" aria-hidden="true">Git</span>Git</li>
           <li class="skill-card"><span class="skill-icon" style="color:#181717" aria-hidden="true">Hub</span>GitHub</li>
           <li class="skill-card"><span class="skill-icon" style="color:#007acc" aria-hidden="true">VS</span>VS Code</li>
           <li class="skill-card"><span class="skill-icon" style="color:#2563eb" aria-hidden="true">▤</span>Responsive Design</li>
+          <li class="skill-card"><span class="skill-icon" style="color:#38bdf8" aria-hidden="true">🎤</span>Public Speaking & Presentation</li>
           <li class="skill-card"><span class="skill-icon" style="color:#f59e0b" aria-hidden="true">💡</span>Problem Solving</li>
         </ul>
       </div>
     </section>
  
     <!-- ============ EDUCATION ============ -->
-    <section id="education" class="section section-alt" aria-labelledby="education-heading">
+    <section id="education" class="section section-alt" aria-labelledby="education-heading" data-aos="fade-up">
       <div class="container">
         <h2 id="education-heading"><span aria-hidden="true">🎓</span> Education</h2>
         <div class="info-card">
@@ -145,7 +153,7 @@
     </section>
  
     <!-- ============ EXPERIENCE ============ -->
-    <section id="experience" class="section" aria-labelledby="experience-heading">
+    <section id="experience" class="section" aria-labelledby="experience-heading" data-aos="fade-up">
       <div class="container">
         <h2 id="experience-heading"><span aria-hidden="true">💼</span> Internship / Experience</h2>
         <div class="info-card timeline-card">
@@ -153,46 +161,81 @@
           <div>
             <h3>Web Development Intern</h3>
             <p class="text-accent">Thiranex (Remote)</p>
-            <p class="muted">Working on real-world web development tasks, building responsive interfaces and improving project skills.</p>
+            <p class="muted">Completed real-world web development tasks, building responsive web applications and refining front-end architectures.</p>
           </div>
-          <span class="date-pill">July 2025 – Present</span>
+          <span class="date-pill">Completed</span>
         </div>
       </div>
     </section>
  
     <!-- ============ PROJECTS ============ -->
-    <section id="projects" class="section section-alt" aria-labelledby="projects-heading">
+    <section id="projects" class="section section-alt" aria-labelledby="projects-heading" data-aos="fade-up">
       <div class="container">
         <h2 id="projects-heading"><span aria-hidden="true">📁</span> Projects</h2>
         <div class="projects-grid">
           
+          <!-- Project 1: Voyara Travel Explorer -->
           <article class="project-card">
-            <div class="project-icon icon-pink" aria-hidden="true">💻</div>
-            <h3>Portfolio Website</h3>
-            <p>A personal portfolio website built using advanced grid layouts, multi-theme variable state configurations, and clean semantic elements to showcase my engineering skills.</p>
-            <a href="#" class="project-link">View Project →</a>
+            <a href="https://voyara-travel-explorer.vercel.app" target="_blank" rel="noopener noreferrer" class="project-card-link">
+              <div class="project-icon icon-pink" aria-hidden="true">✈️</div>
+              <h3>Voyara Travel Explorer</h3>
+              <p>A modern travel web application built to explore destinations and plan travel experiences seamlessly with interactive components.</p>
+              <span class="project-link">View Live Project ↗</span>
+            </a>
           </article>
           
-          <article class="project-card draft-card">
-            <div class="project-icon" aria-hidden="true">⏳</div>
-            <h3>E-Commerce Landing Page</h3>
-            <p>Next up in development sequence. Building an advanced product storefront utilizing component systems.</p>
-            <span class="status-badge">Coming Soon</span>
+          <!-- Project 2: Aerocast -->
+          <article class="project-card">
+            <a href="https://technerd13-hub.github.io/Aerocast/" target="_blank" rel="noopener noreferrer" class="project-card-link">
+              <div class="project-icon icon-pink" aria-hidden="true">🌤️</div>
+              <h3>Aerocast</h3>
+              <p>A real-time weather forecasting application providing instant weather insights and atmospheric conditions via a responsive interface.</p>
+              <span class="project-link">View Live Project ↗</span>
+            </a>
           </article>
           
-          <article class="project-card draft-card">
-            <div class="project-icon" aria-hidden="true">⏳</div>
-            <h3>Simple Calculator</h3>
-            <p>Basic front-end processing application designed to compute expressions seamlessly inside viewports.</p>
-            <span class="status-badge">Coming Soon</span>
+          <!-- Project 3: Todo App -->
+          <article class="project-card">
+            <a href="https://technerd13-hub.github.io/todo-app/" target="_blank" rel="noopener noreferrer" class="project-card-link">
+              <div class="project-icon icon-pink" aria-hidden="true">📝</div>
+              <h3>Todo App</h3>
+              <p>A clean, interactive productivity app designed for efficient daily task tracking and management.</p>
+              <span class="project-link">View Live Project ↗</span>
+            </a>
           </article>
           
         </div>
       </div>
     </section>
+
+    <!-- ============ CERTIFICATIONS ============ -->
+    <section id="certifications" class="section" aria-labelledby="certifications-heading" data-aos="fade-up">
+      <div class="container">
+        <h2 id="certifications-heading"><span aria-hidden="true">📜</span> Certifications</h2>
+        <div class="projects-grid">
+          
+          <article class="project-card">
+            <div class="project-icon icon-pink" aria-hidden="true">🤖</div>
+            <h3>Claude Code in Action</h3>
+            <p class="muted">Issued by: <strong>Anthrop\c</strong> | July 16, 2026</p>
+            <p>Verification ID: ekuy8au9ptpj</p>
+            <a href="https://verify.skilljar.com/c/ekuy8au9ptpj" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-small" style="margin-top: 10px; display: inline-block;">Verify Certificate ↗</a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-icon icon-pink" aria-hidden="true">✨</div>
+            <h3>Generative AI Mastermind</h3>
+            <p class="muted">Issued by: <strong>Outskill</strong></p>
+            <p>Mastery in Generative AI techniques, tools, and real-world workflows.</p>
+            <a href="assets/generative-ai-mastermind.jpg" target="_blank" class="btn btn-outline btn-small" style="margin-top: 10px; display: inline-block;">View Certificate ↗</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
  
     <!-- ============ CONTACT ============ -->
-    <section id="contact" class="section" aria-labelledby="contact-heading">
+    <section id="contact" class="section section-alt" aria-labelledby="contact-heading" data-aos="fade-up">
       <div class="container contact-grid">
         <div class="contact-info">
           <h2 id="contact-heading"><span aria-hidden="true">📨</span> Get In Touch</h2>
@@ -240,6 +283,11 @@
     </div>
   </footer>
  
+  <!-- Scroll Animation Library -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+  </script>
   <script src="js/script.js"></script>
 </body>
 </html>
