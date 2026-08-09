@@ -328,3 +328,124 @@ section[id]{scroll-margin-top:28px}
   0%,100%{transform:scale(.9);opacity:.55}
   50%{transform:scale(1.12);opacity:1}
 }
+
+
+/* =========================================================
+   MOBILE PERFORMANCE PASS
+   Keeps the visual design but reduces expensive paint/composite
+   work on phones and touch devices.
+   ========================================================= */
+
+/* Let the browser skip rendering far-away sections until needed. */
+@media (max-width: 900px) {
+  .section,
+  .contact,
+  .learning,
+  .internship,
+  .statement {
+    content-visibility: auto;
+    contain-intrinsic-size: 700px;
+  }
+
+  /* Backdrop blur is one of the biggest mobile GPU costs. */
+  .nav,
+  .mobile-menu,
+  .visual-card,
+  .stage-note {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .nav {
+    background: color-mix(in srgb, var(--bg) 96%, transparent);
+  }
+
+  .mobile-menu {
+    background: var(--bg);
+  }
+
+  .visual-card,
+  .stage-note {
+    background: var(--panel);
+  }
+
+  /* Keep the PocketPilot presentation, but use cheaper painting. */
+  .pocketpilot-stage {
+    contain: layout paint;
+  }
+
+  .pocketpilot-stage::before {
+    animation-duration: 10s;
+    filter: none;
+  }
+
+  /* One moving marquee is enough on a phone. */
+  .marquee .ghost {
+    display: none;
+  }
+
+  .marquee-track {
+    animation-duration: 34s;
+  }
+
+  /* Disable hover-only transforms on touch screens. */
+  .project:hover,
+  .project:hover .phone-wrap img,
+  .galaxy-profile:hover .photo-frame {
+    transform: none;
+  }
+
+  /* Simpler galaxy on phones: preserve the effect without three
+     continuously animated GPU layers + blur. */
+  .galaxy-profile::before {
+    filter: none;
+    opacity: .65;
+  }
+
+  .galaxy-ring {
+    box-shadow: none !important;
+  }
+
+  .ring-three,
+  .galaxy-star {
+    animation: none !important;
+  }
+
+  .ring-one {
+    animation-duration: 16s;
+  }
+
+  .ring-two {
+    animation-duration: 22s;
+  }
+
+  .galaxy-profile .photo-frame::before {
+    filter: none;
+  }
+
+  .weather-orb {
+    animation-duration: 12s;
+  }
+}
+
+@media (pointer: coarse) {
+  .cursor-glow {
+    display: none !important;
+  }
+
+  .magnetic {
+    transform: none !important;
+  }
+}
+
+/* Respect reduced motion and make the page immediately responsive. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .001ms !important;
+  }
+}
