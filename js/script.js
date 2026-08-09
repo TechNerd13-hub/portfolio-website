@@ -20,20 +20,27 @@ const nav=document.querySelector(".nav");
 const hero=document.querySelector(".hero");
 const mobile=document.querySelector(".mobile-menu");
 const menu=document.querySelector(".menu");
-const heroDisplay=document.querySelector(".display");
 const navLinks=[...document.querySelectorAll(".desktop-nav a")];
 let ticking=false;
+let pageMax=1;
+let navHidePoint=0;
+
+const cacheScrollMetrics=()=>{
+  const d=document.documentElement;
+  pageMax=Math.max(1,d.scrollHeight-d.clientHeight);
+  navHidePoint=hero
+    ? Math.max(hero.offsetHeight*.55,window.innerHeight*.7)
+    : window.innerHeight*.7;
+};
 
 const updateScrollUI=()=>{
   ticking=false;
   const y=window.scrollY;
-  const d=document.documentElement;
-  const max=d.scrollHeight-d.clientHeight;
 
-  if(progress) progress.style.transform=`scaleX(${max?y/max:0})`;
+  if(progress) progress.style.transform=`scaleX(${Math.min(1,y/pageMax)})`;
 
   if(nav && hero){
-    const hidden=y>Math.max(hero.offsetHeight*.55,window.innerHeight*.7);
+    const hidden=y>navHidePoint;
     nav.classList.toggle("nav-hidden",hidden);
     if(hidden) mobile?.classList.remove("open");
   }
@@ -46,11 +53,22 @@ const requestScrollUI=()=>{
   }
 };
 window.addEventListener("scroll",requestScrollUI,{passive:true});
-window.addEventListener("resize",requestScrollUI,{passive:true});
+window.addEventListener("resize",()=>{
+  cacheScrollMetrics();
+  requestScrollUI();
+},{passive:true});
+
+window.addEventListener("load",()=>{
+  cacheScrollMetrics();
+  requestScrollUI();
+},{once:true});
+
+cacheScrollMetrics();
 updateScrollUI();
 
 /* Cursor glow only runs on real mouse/trackpad devices. */
-if(window.matchMedia("(pointer:fine)").matches && glow){
+const hasFinePointer=window.matchMedia("(pointer:fine)").matches;
+if(hasFinePointer && glow){
   let glowX=0, glowY=0, glowTick=false;
   window.addEventListener("pointermove",e=>{
     glowX=e.clientX; glowY=e.clientY;
@@ -78,7 +96,7 @@ const revealObserver=new IntersectionObserver(entries=>{
 document.querySelectorAll(".reveal").forEach(el=>revealObserver.observe(el));
 
 /* Magnetic buttons only on mouse/trackpad. */
-if(window.matchMedia("(pointer:fine)").matches){
+if(hasFinePointer){
   document.querySelectorAll(".magnetic").forEach(el=>{
     el.addEventListener("pointermove",e=>{
       const r=el.getBoundingClientRect();

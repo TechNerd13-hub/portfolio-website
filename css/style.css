@@ -592,3 +592,56 @@ section[id]{scroll-margin-top:28px}
     transition: none !important;
   }
 }
+
+
+/* =========================================================
+   FINAL FRAME-TIME OPTIMIZATION
+   ========================================================= */
+
+/* Only promote elements that actually animate. */
+.marquee-track,
+.galaxy-ring,
+.galaxy-star,
+.galaxy-profile::before,
+.pocketpilot-stage::before,
+.weather-orb,
+.poster-orbit {
+  will-change: transform;
+}
+
+/* Never animate large shadows; they trigger expensive repaints. */
+@media (max-width: 900px) {
+  .project,
+  .phone-wrap,
+  .photo-frame,
+  .visual-card,
+  .stage-note {
+    box-shadow: none !important;
+  }
+
+  .project {
+    transition: border-color .2s ease, opacity .2s ease;
+  }
+
+  .project:hover {
+    transform: none !important;
+  }
+
+  /* Keep reveal motion subtle enough to avoid a burst of work while scrolling. */
+  .reveal,
+  .reveal-scale {
+    transition-duration: .45s !important;
+    animation-duration: .45s !important;
+  }
+}
+
+/* Desktop keeps the premium effects but moves animations to compositor layers. */
+@media (min-width: 901px) {
+  .project,
+  .phone-wrap,
+  .photo-frame,
+  .visual-card,
+  .stage-note {
+    transform: translateZ(0);
+  }
+}
