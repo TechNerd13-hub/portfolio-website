@@ -449,3 +449,146 @@ section[id]{scroll-margin-top:28px}
     transition-duration: .001ms !important;
   }
 }
+
+
+/* =========================================================
+   ULTIMATE PERFORMANCE PASS
+   ========================================================= */
+
+.progress span {
+  transform-origin: left center;
+  transform: scaleX(0);
+  will-change: transform;
+}
+
+.grain {
+  display: none !important;
+}
+
+.cursor-glow {
+  will-change: transform;
+  left: 0 !important;
+  top: 0 !important;
+}
+
+@media (min-width: 901px) {
+  .nav,
+  .mobile-menu,
+  .visual-card,
+  .stage-note {
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+  }
+}
+
+@media (max-width: 900px) {
+  html { scroll-behavior: auto; }
+
+  .cursor-glow {
+    display: none !important;
+  }
+
+  .nav,
+  .mobile-menu,
+  .visual-card,
+  .stage-note {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    filter: none !important;
+  }
+
+  .nav,
+  .mobile-menu {
+    background: var(--bg) !important;
+  }
+
+  .section,
+  .marquee,
+  .learning,
+  .internship,
+  .statement,
+  footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 700px;
+  }
+
+  .project,
+  .project-main,
+  .project-side,
+  .pocketpilot-stage {
+    contain: paint;
+  }
+
+  .galaxy-profile::before {
+    filter: none !important;
+    animation: none !important;
+    opacity: .55;
+  }
+
+  .galaxy-ring {
+    box-shadow: none !important;
+  }
+
+  .ring-three,
+  .galaxy-star {
+    animation: none !important;
+  }
+
+  .ring-one {
+    animation: galaxyOrbitOne 18s linear infinite;
+  }
+
+  .ring-two {
+    animation: galaxyOrbitTwo 26s linear infinite;
+  }
+
+  .galaxy-profile .photo-frame::before {
+    filter: none !important;
+  }
+
+  .marquee .ghost {
+    display: none !important;
+  }
+
+  .marquee-track {
+    animation-duration: 36s !important;
+  }
+
+  .project:hover,
+  .project:hover .phone-wrap img,
+  .project-main:hover,
+  .galaxy-profile:hover .photo-frame {
+    transform: none !important;
+  }
+
+  .project-main .pocketpilot-stage::before {
+    animation: none !important;
+    filter: none !important;
+    opacity: .7;
+  }
+
+  .phone-wrap img {
+    box-shadow: none !important;
+  }
+}
+
+@media (pointer: coarse) {
+  .cursor-glow {
+    display: none !important;
+  }
+
+  .magnetic {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

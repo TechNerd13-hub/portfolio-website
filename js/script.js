@@ -30,16 +30,12 @@ const updateScrollUI=()=>{
   const d=document.documentElement;
   const max=d.scrollHeight-d.clientHeight;
 
-  if(progress) progress.style.width=(max?y/max*100:0)+"%";
+  if(progress) progress.style.transform=`scaleX(${max?y/max:0})`;
 
   if(nav && hero){
     const hidden=y>Math.max(hero.offsetHeight*.55,window.innerHeight*.7);
     nav.classList.toggle("nav-hidden",hidden);
     if(hidden) mobile?.classList.remove("open");
-  }
-
-  if(heroDisplay && window.matchMedia("(min-width:701px)").matches){
-    heroDisplay.style.transform=`translate3d(0,${Math.min(y*.08,26)}px,0)`;
   }
 };
 
@@ -61,8 +57,7 @@ if(window.matchMedia("(pointer:fine)").matches && glow){
     if(!glowTick){
       glowTick=true;
       requestAnimationFrame(()=>{
-        glow.style.left=glowX+"px";
-        glow.style.top=glowY+"px";
+        glow.style.transform=`translate3d(${glowX}px,${glowY}px,0) translate(-50%,-50%)`;
         glowTick=false;
       });
     }
