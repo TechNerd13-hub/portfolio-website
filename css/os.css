@@ -200,7 +200,7 @@ html[data-os-theme="dark"] #ambient .ambient-star{display:block}
 .dock-item:hover{transform:translateY(-8px) scale(1.08);box-shadow:0 8px 0 rgba(0,0,0,.15)}
 .dock-item.running:after{content:"";position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:var(--ink)}
 .dock-sep{width:2px;align-self:stretch;background:var(--ink);opacity:.15;margin:4px 2px}
-
+@media(max-width:700px){#dock{gap:7px;padding:8px 10px;bottom:10px}.dock-item{width:42px;height:42px;font-size:13px}}
 
 /* ---------- WINDOWS ---------- */
 .win{
@@ -251,7 +251,11 @@ html[data-os-theme="dark"] #ambient .ambient-star{display:block}
 }
 .win-btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 rgba(0,0,0,.3)}
 .win-btn.ghost{background:transparent;color:var(--ink)}
-@media(max-width:700px){.win,.win.maximized{position:fixed!important;left:8px!important;right:8px!important;top:46px!important;bottom:calc(70px + env(safe-area-inset-bottom))!important;width:auto!important;min-width:0!important;max-width:none!important;height:auto!important;max-height:none!important}.win-bar{cursor:default;touch-action:none}.win-body{min-height:0;-webkit-overflow-scrolling:touch;touch-action:pan-y;padding:18px 16px calc(20px + env(safe-area-inset-bottom))}.win-body h2{font-size:clamp(28px,8.5vw,38px)}.compose input,.compose textarea{font-size:16px}}
+@media(max-width:700px){
+  .win{position:fixed!important;left:10px!important;right:10px!important;top:50px!important;bottom:88px!important;
+       width:auto!important;max-width:none!important;height:auto!important;}
+  .win-bar{cursor:default}
+}
 
 /* --- App: PROJECT (phone/browser mock) --- */
 .app-shot{border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:16px 0;box-shadow:4px 4px 0 rgba(0,0,0,.2)}
@@ -423,41 +427,59 @@ html[data-os-theme="dark"] #ambient .ambient-star{display:block}
   .hero-quote{margin-left:auto;margin-right:auto}
   .hero-photo{width:150px;height:150px}
 }
-@media(max-width:700px){#heroView,#osView{height:100dvh;min-height:100svh}.hero-inner{height:100%;min-height:100svh;padding:18px 6vw calc(18px + env(safe-area-inset-bottom));gap:22px}.hero-photo{width:min(150px,38vw);height:min(150px,38vw)}.hero-name{font-size:clamp(32px,10vw,52px)}.hero-quote{font-size:17px;line-height:1.45;margin-top:18px}.hero-enter{margin-top:22px;padding:13px 20px}}
+@media(max-width:700px){
+  .hero-name{font-size:clamp(32px,10vw,52px)}
+}
 @media(prefers-reduced-motion:reduce){
   .hero-eyebrow,.hl,.hero-quote,.hero-enter,.hero-photo,.hero-tag{animation:none;opacity:1;transform:none}
 }
 
-@media(max-width:700px){html,body{width:100%;min-width:0;overflow:hidden;overscroll-behavior:none}#desktop{inset:38px 0 calc(62px + env(safe-area-inset-bottom)) 0;overflow:visible}.desktop-hero{top:3vh;left:6vw;right:6vw}.desktop-hero h1{font-size:clamp(34px,10vw,54px)}.desktop-hero p{font-size:12px;line-height:1.6}.desktop-hero .dh-hint{display:none}}
-
-/* ---------- MOBILE DASHBOARD / DOCK ---------- */
+/* ---------- FINAL MOBILE DASHBOARD: TWO FIXED ROWS ---------- */
+.mobile-dock-row{display:contents}
 @media(max-width:700px){
   #dock{
     left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));
     width:auto;max-width:none;transform:none;
-    display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
-    grid-auto-rows:54px;gap:7px;padding:9px 8px;
-    align-items:center;justify-items:stretch;
-    overflow:visible;
+    display:flex;flex-direction:column;gap:6px;
+    padding:8px;
     border-radius:18px;
+    overflow:hidden;
     touch-action:manipulation;
+    box-sizing:border-box;
+  }
+  #dock .mobile-dock-row{
+    display:grid;
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    gap:6px;
+    width:100%;
+    min-width:0;
   }
   #dock .dock-sep{display:none}
   #dock .dock-item{
-    width:100%;min-width:0;height:54px;
+    position:relative;
+    width:100%;min-width:0;height:52px;
     display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:2px;padding:3px 2px 2px;
-    border-radius:10px;font-size:12px;line-height:1;
+    gap:3px;padding:3px 2px 2px;
+    box-sizing:border-box;
+    border-radius:10px;
+    font-size:12px;line-height:1;
+    overflow:hidden;
+    flex:none;
   }
   #dock .dock-item::after{
-    content:attr(data-mobile-label);display:block;
+    content:attr(data-mobile-label);
+    display:block;
+    width:100%;
     font:700 7px/1.05 "IBM Plex Mono",monospace;
-    letter-spacing:-.01em;text-align:center;white-space:nowrap;
-    max-width:100%;overflow:hidden;text-overflow:ellipsis;
+    letter-spacing:-.02em;
+    text-align:center;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
   }
-  #dock .dock-item.dock-ai::before{inset:-3px;border-radius:13px}
   #dock .dock-item:hover{transform:none;box-shadow:none}
-  #desktop{inset:38px 0 calc(144px + env(safe-area-inset-bottom)) 0}
-  #ambient{inset:38px 0 calc(144px + env(safe-area-inset-bottom)) 0}
-  .win,.win.maximized{bottom:calc(144px + env(safe-area-inset-bottom))!important}
+  #dock .dock-item.dock-ai::before{inset:-3px;border-radius:13px}
+  #desktop{inset:38px 0 calc(132px + env(safe-area-inset-bottom)) 0}
+  #ambient{inset:38px 0 calc(132px + env(safe-area-inset-bottom)) 0}
+  .win,.win.maximized{bottom:calc(132px + env(safe-area-inset-bottom))!important}
 }
