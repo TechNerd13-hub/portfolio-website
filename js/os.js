@@ -285,7 +285,7 @@
     const win=openWindows[id];
     if(!win) return;
     win.classList.add("closing");
-    document.querySelector(`.dock-item[data-open="${id}"]`)?.classList.remove("running");
+    document.querySelectorAll(`[data-open="${id}"]`).forEach(el=>el.classList.remove("running"));
     setTimeout(()=>{ win.remove(); delete openWindows[id]; },260);
   }
 
@@ -328,15 +328,15 @@
     win.addEventListener("pointerdown",()=>focusWindow(win));
     focusWindow(win);
     openWindows[id]=win;
-    document.querySelector(`.dock-item[data-open="${id}"]`)?.classList.add("running");
+    document.querySelectorAll(`[data-open="${id}"]`).forEach(el=>el.classList.add("running"));
     if(id==="ai") initAIApp(win);
     if(id==="contact") initContactForm(win);
   }
 
   function bounceDock(id){
-    const el=document.querySelector(`.dock-item[data-open="${id}"]`);
-    if(!el) return;
-    el.classList.remove("bounce"); void el.offsetWidth; el.classList.add("bounce");
+    const els=document.querySelectorAll(`[data-open="${id}"]`);
+    if(!els.length) return;
+    els.forEach(el=>{ el.classList.remove("bounce"); void el.offsetWidth; el.classList.add("bounce"); });
   }
 
   document.addEventListener("click",e=>{
