@@ -334,9 +334,9 @@
   }
 
   function bounceDock(id){
-    const els=document.querySelectorAll(`[data-open="${id}"]`);
-    if(!els.length) return;
-    els.forEach(el=>{ el.classList.remove("bounce"); void el.offsetWidth; el.classList.add("bounce"); });
+    const el=document.querySelector(`.dock-item[data-open="${id}"]`);
+    if(!el) return;
+    el.classList.remove("bounce"); void el.offsetWidth; el.classList.add("bounce");
   }
 
   document.addEventListener("click",e=>{
