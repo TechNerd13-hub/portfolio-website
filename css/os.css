@@ -450,14 +450,21 @@ html[data-os-theme="dark"] #ambient .ambient-star{display:block}
   scroll-padding-bottom:170px;
 }
 @media(min-width:701px){
-  .win-body{
-    overflow-y:auto;
-    overflow-x:hidden;
-    scrollbar-gutter:stable;
+  /* Every desktop window gets a bounded viewport so long content can scroll
+     inside the window instead of being clipped by the OS desktop. */
+  .win:not(.maximized){
+    max-height:calc(100vh - var(--win-top,54px) - 122px)!important;
   }
-  .win-body::-webkit-scrollbar{width:10px}
-  .win-body::-webkit-scrollbar-track{background:var(--paper2)}
-  .win-body::-webkit-scrollbar-thumb{background:var(--ink);border-radius:8px;border:2px solid var(--paper2)}
+  .win-body{
+    overflow-y:scroll!important;
+    overflow-x:hidden;
+    scrollbar-gutter:stable both-edges;
+    scrollbar-width:auto;
+    scrollbar-color:var(--ink) var(--paper2);
+  }
+  .win-body::-webkit-scrollbar{width:12px;display:block}
+  .win-body::-webkit-scrollbar-track{background:var(--paper2);border-left:1px solid rgba(0,0,0,.14)}
+  .win-body::-webkit-scrollbar-thumb{background:var(--ink);border-radius:8px;border:3px solid var(--paper2);min-height:42px}
   .win.maximized{
     bottom:92px!important;
     height:auto!important;

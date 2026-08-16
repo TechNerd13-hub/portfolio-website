@@ -254,6 +254,7 @@
     const baseY=54+ (count*28)%220;
     win.style.left=baseX+"px";
     win.style.top=baseY+"px";
+    win.style.setProperty("--win-top",baseY+"px");
   }
 
   function makeDraggable(win){
@@ -270,8 +271,11 @@
     });
     bar.addEventListener("pointermove",e=>{
       if(!dragging) return;
-      win.style.left=Math.max(4,e.clientX-offX)+"px";
-      win.style.top=Math.max(4,e.clientY-offY-38)+"px";
+      const nextLeft=Math.max(4,e.clientX-offX);
+      const nextTop=Math.max(4,e.clientY-offY-38);
+      win.style.left=nextLeft+"px";
+      win.style.top=nextTop+"px";
+      win.style.setProperty("--win-top",nextTop+"px");
     });
     bar.addEventListener("pointerup",e=>{ dragging=false; try{bar.releasePointerCapture(e.pointerId);}catch(_){} });
     bar.addEventListener("dblclick",e=>{ if(!e.target.closest(".win-dots")) toggleMaximize(win); });
