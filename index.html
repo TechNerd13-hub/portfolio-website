@@ -1,196 +1,265 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Ayusman Pradhan — Full Stack Developer and CSE student.">
-<title>Ayusman Pradhan — Full Stack Developer</title>
+<meta name="description" content="Ayusman Pradhan — Full Stack Developer and CSE student. An interactive desktop, not a scroll page.">
+<title>AYUSMAN_OS — Ayusman Pradhan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/os.css">
 </head>
 <body>
-<div class="grain"></div><div class="cursor-glow"></div><div class="progress"><span></span></div>
 
-<header class="nav">
-  <a class="brand" href="#home"><strong>AP</strong><span>AYUSMAN PRADHAN</span></a>
-  <nav class="desktop-nav">
-    <a href="#about">About</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
-  </nav>
-  <div class="nav-tools">
-    <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">☼</button>
-    <a class="nav-cta magnetic" href="#contact">Let's talk <span>↗</span></a>
-    <button class="menu" aria-label="Open menu"><i></i><i></i></button>
+<div id="boot" aria-hidden="true">
+  <div id="greetScreen">
+    <p class="greet-word"></p>
+  </div>
+  <div id="bootTerminal"><div id="bootLog"></div><span class="boot-cursor"></span></div>
+  <button class="boot-skip" type="button">skip ↗</button>
+</div>
+
+<div id="heroView">
+  <div id="heroAmbient" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-eyebrow">FULL STACK DEVELOPER · CSE STUDENT</p>
+      <h1 class="hero-name" id="heroName" aria-label="Ayusman Pradhan"></h1>
+      <p class="hero-quote">Curious about how things work. Serious about making them work.</p>
+      <button class="hero-enter" id="enterOsBtn" type="button">
+        <span>Enter the OS</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+    <div class="hero-photo-col">
+      <div class="hero-photo"><img src="image/profile-headshot.jpg" alt="Ayusman Pradhan"></div>
+      <div class="hero-tags">
+        <span class="hero-tag" style="--ti:0">Full&nbsp;Stack&nbsp;Developer</span>
+        <span class="hero-tag" style="--ti:1">CSE&nbsp;Student</span>
+        <span class="hero-tag" style="--ti:2">Software&nbsp;Engineer</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="osView">
+<header id="menubar">
+  <div class="mb-left">
+    <div class="mb-logo" data-open="about"><span class="mb-avatar"><img src="image/profile-headshot.jpg" alt="Ayusman Pradhan"></span><span class="mb-text">AYUSMAN_OS</span></div>
+    <div class="mb-item" data-open="about">About</div>
+    <div class="mb-item" data-open="pocketpilot">Work</div>
+    <div class="mb-item" data-open="credentials">Credentials</div>
+    <div class="mb-item" data-open="contact">Contact</div>
+  </div>
+  <div class="mb-right">
+    <div class="mb-status"><span class="dot"></span>open to opportunities</div>
+    <span id="mbClock"></span>
+    <button id="mbTheme" class="mb-theme" aria-label="Toggle theme">☾</button>
   </div>
 </header>
-<div class="mobile-menu"><a href="#about">About</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div>
 
-<main id="home">
-<section class="hero">
-  <div class="hero-top">
-    <p class="eyebrow reveal">FULL STACK DEVELOPER <b>·</b> CSE STUDENT</p>
-    <div class="availability reveal delay-1"><span></span> Open to opportunities</div>
-  </div>
-  <div class="hero-main">
-    <div class="hero-copy">
-      <h1 class="display"><span class="line">I build</span><span class="line accent-word">useful</span><span class="line">digital things.</span></h1>
-      <p class="hero-lede reveal delay-2">I'm Ayusman Pradhan — a Computer Science Engineering student building full-stack products, responsive interfaces and practical software.</p>
-      <div class="hero-actions reveal delay-3">
-        <a class="btn primary magnetic" href="#work">Explore my work <span>↘</span></a>
-        <a class="btn secondary magnetic" href="assets/Ayusman_Pradhan_Resume.pdf" target="_blank" rel="noopener">View resume <span>↗</span></a>
-      </div>
-      <div class="social-row reveal delay-4">
-        <a href="https://github.com/TechNerd13-hub" target="_blank" rel="noopener">GitHub <span>↗</span></a>
-        <a href="https://www.linkedin.com/in/ayusman-pradhan-425b21329" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
-        <a href="mailto:ayusmanpradhan1306@gmail.com">Email <span>↗</span></a>
-      </div>
-    </div>
-    <div class="hero-visual reveal-scale">
-      <div class="visual-back">BUILD<br>BETTER.</div>
-      <div class="galaxy-profile">
-      <div class="galaxy-ring ring-one"></div>
-      <div class="galaxy-ring ring-two"></div>
-      <div class="galaxy-ring ring-three"></div>
-      <span class="galaxy-star star-one"></span>
-      <span class="galaxy-star star-two"></span>
-      <span class="galaxy-star star-three"></span>
-      <span class="galaxy-star star-four"></span>
-      <span class="galaxy-star star-five"></span>
-      <div class="photo-frame"><img src="image/profile.jpg" alt="Ayusman Pradhan" width="360" height="480" fetchpriority="high" decoding="async"></div>
-    </div>
-      <div class="visual-card one"><small>CURRENTLY</small><strong>Building PocketPilot</strong></div>
-      <div class="visual-card two"><small>FOCUS</small><strong>Full-stack products</strong></div>
+<main id="desktop">
+  <div id="ambient" aria-hidden="true"></div>
+  <div class="desktop-hero">
+    <p class="dh-eyebrow">FULL STACK DEVELOPER · CSE STUDENT</p>
+    <h1>Welcome to my<br><em>operating system.</em></h1>
+    <p>Instead of scrolling through my work, open it — double-click the icons or use the dock below. Everything here is a real, working window.</p>
+    <div class="dh-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      try dragging a window by its title bar
     </div>
   </div>
-  <div class="hero-bottom"><span>SCROLL</span><span class="line"></span><span>01</span></div>
-</section>
 
-<section class="marquee" aria-label="Portfolio motion banner">
-  <div class="marquee-track"><span>LEARN</span><i>•</i><span>SHIFT</span><i>•</i><span>REPEAT</span><i>•</i><span>BUILD</span><i>•</i><span>LEARN</span><i>•</i><span>SHIFT</span><i>•</i><span>REPEAT</span><i>•</i><span>BUILD</span><i>•</i></div>
-  <div class="marquee-track ghost" aria-hidden="true"><span>MAKE</span><i>•</i><span>TEST</span><i>•</i><span>SHIP</span><i>•</i><span>REFINE</span><i>•</i><span>MAKE</span><i>•</i><span>TEST</span><i>•</i><span>SHIP</span><i>•</i></div>
-</section>
-
-<section id="about" class="section about">
-  <div class="section-meta">01 / ABOUT</div>
-  <div class="about-layout">
-    <h2 class="section-title reveal">Curious about how things work.<br><em>Serious about making them work.</em></h2>
-    <div class="about-copy reveal delay-1">
-      <p>I like turning ideas into working products — from the first interface sketch to the logic behind it and the final deployment.</p>
-      <p>Alongside development, public speaking and debate have taught me how to research quickly, structure ideas and communicate clearly.</p>
-    </div>
+  <div class="desk-icon" style="left:6vw;top:16%" data-open="folder">
+    <div class="di-glyph di-folder">📁</div>
+    <div class="di-label">Ayusman_Pradhan/</div>
   </div>
-</section>
-
-<section id="work" class="section work">
-  <div class="section-head">
-    <div><div class="section-meta">02 / SELECTED WORK</div><h2 class="section-title reveal">A few things<br><em>I've built.</em></h2></div>
-    <p class="section-intro reveal">Focused projects with a clear problem, a deliberate interface and something real behind the screen.</p>
+  <div class="desk-icon" style="left:6vw;top:58%" data-open="skills">
+    <div class="di-glyph" style="background:#00c48c">SK</div>
+    <div class="di-label">Skills.sys</div>
   </div>
-
-  <article class="project project-main reveal">
-    <div class="project-info">
-      <div class="project-index">01</div>
-      <span class="tag">ANDROID · FINTECH · PRODUCT</span>
-      <h3>PocketPilot</h3>
-      <p>Personal finance app designed to connect spending and payment behaviour. Users can track expenses, initiate UPI payments through the apps they use and organise spending automatically by source and category.</p>
-      <div class="chips"><span>React Native</span><span>Expo</span><span>UPI flow</span><span>Expense tracking</span></div>
-      <a class="project-link" href="projects/pocketpilot.html">View project <b>↗</b></a>
-    </div>
-    <div class="project-image pocketpilot-stage">
-      <div class="stage-grid" aria-hidden="true"></div>
-      <div class="phone-wrap">
-        <img src="assets/pocketpilot-dashboard.jpeg" alt="PocketPilot dashboard showing budget, savings and upcoming subscription tracking" loading="lazy" decoding="async" fetchpriority="low">
-      </div>
-      <div class="stage-note note-a"><small>LIVE PRODUCT</small><strong>Budget → Savings → Subscriptions</strong></div>
-      <div class="stage-note note-b"><small>PAYMENT FLOW</small><strong>UPI intent + expense tracking</strong></div>
-    </div>
-  </article>
-
-  <div class="project-grid">
-    <article class="project compact reveal">
-      <div class="project-info">
-        <div class="project-index">02</div><span class="tag">REACT · TRAVEL</span><h3 class="project-name">Voyara <small>Travel Explorer</small></h3>
-        <p>A modern travel explorer built around curated journeys, recommendation scoring, multi-currency filtering and motion-led discovery.</p>
-        <div class="chips"><span>React</span><span>Vite</span><span>Framer Motion</span></div>
-        <a class="project-link" href="https://voyara-travel-explorer.vercel.app/" target="_blank" rel="noopener">Open project <b>↗</b></a>
-      </div>
-      <div class="project-visual voyara">
-        <div class="project-poster-title">VOYARA</div>
-        <small>TRAVEL EXPLORER · DISCOVER DIFFERENT</small>
-        <div class="poster-orbit orbit-one"></div><div class="poster-orbit orbit-two"></div>
-      </div>
-    </article>
-    <article class="project compact reveal delay-1">
-      <div class="project-info">
-        <div class="project-index">03</div><span class="tag">JAVASCRIPT · WEATHER</span><h3 class="project-name">Aerocast <small>Weather Experience</small></h3>
-        <p>A responsive weather experience focused on fast access to useful conditions and a clean, lightweight interface.</p>
-        <div class="chips"><span>JavaScript</span><span>Weather API</span><span>GitHub Pages</span></div>
-        <a class="project-link" href="https://technerd13-hub.github.io/Aerocast/" target="_blank" rel="noopener">Open project <b>↗</b></a>
-      </div>
-      <div class="project-visual aerocast">
-        <div class="project-poster-title">AEROCAST</div>
-        <strong>24°</strong>
-        <small>WEATHER EXPERIENCE · LIVE</small>
-        <div class="weather-orb"></div>
-      </div>
-    </article>
+  <div class="desk-icon" style="left:6vw;top:72%" data-open="resume">
+    <div class="di-glyph" style="background:#ff5d5d;color:#fff">PDF</div>
+    <div class="di-label">Resume.pdf</div>
   </div>
-</section>
-
-<section id="skills" class="section skills">
-  <div class="section-meta">03 / SKILLS</div>
-  <div class="skills-layout">
-    <div><h2 class="section-title reveal">Tools I use.<br><em>Things I bring.</em></h2><p class="section-intro reveal">Technical skills are only half the toolkit.</p></div>
-    <div class="skill-list reveal delay-1">
-      <div class="skill-group"><small>DEVELOPMENT</small><div><span>Python</span><span>JavaScript</span><span>HTML5</span><span>CSS3</span><span>Django</span><span>React</span><span>React Native</span><span>Expo</span></div></div>
-      <div class="skill-group"><small>TOOLS & PLATFORM</small><div><span>Git</span><span>GitHub</span><span>Vercel</span><span>REST APIs</span><span>Responsive Design</span><span>VS Code</span></div></div>
-      <div class="skill-group"><small>PEOPLE SKILLS</small><div><span>Public Speaking</span><span>Debate</span><span>Communication</span><span>Problem Solving</span></div></div>
-    </div>
+  <div class="desk-icon" style="right:7vw;top:14%" data-open="voyara">
+    <div class="di-glyph" style="background:#3d5afe;color:#fff">VY</div>
+    <div class="di-label">Voyara.app</div>
   </div>
-</section>
-
-<section class="section learning">
-  <div class="section-meta">04 / LEARNING BY DOING</div>
-  <h2 class="section-title reveal learning-title"><span>Learning by</span> <em>doing.</em></h2>
-  <div class="learning-grid">
-    <div class="learning-item reveal"><span class="year">2024 — 2028</span><div><span class="tag">EDUCATION</span><h3>B.Tech — Computer Science & Engineering</h3><p>ITER, Siksha 'O' Anusandhan University, Bhubaneswar.</p></div></div>
-    <div class="learning-item reveal delay-1"><span class="year">NOW</span><div><span class="tag">ROLE</span><h3>Full Stack Developer</h3><p>Building web and mobile products while expanding my backend and product engineering skills.</p></div></div>
+  <div class="desk-icon" style="right:7vw;top:30%" data-open="aerocast">
+    <div class="di-glyph" style="background:#ffb703">AC</div>
+    <div class="di-label">Aerocast.app</div>
   </div>
-</section>
-
-<section class="section internship">
-  <div class="section-meta">05 / EXPERIENCE</div>
-  <div class="internship-card reveal">
-    <div><span class="tag">INTERNSHIP · 2026</span><h2>Web Development Intern<br><em>Thiranex</em></h2></div>
-    <p>Project-based web development work focused on practical implementation, shipping features and building real project experience.</p>
+  <div class="desk-icon" style="right:7vw;top:46%" data-open="ai">
+    <div class="di-glyph di-ai">✦</div>
+    <div class="di-label">Ask_AI.app</div>
   </div>
-</section>
-
-<section class="section statement">
-  <div class="statement-grid">
-    <h2 class="statement-title reveal"><span class="statement-line">Build things</span><span class="statement-line">people can <em>feel.</em></span><span class="statement-line soft-line">Not just see.</span></h2>
-    <p class="reveal delay-1">I care about the details that make a product feel intentional: the interaction, the hierarchy, the feedback and the reason behind every screen.</p>
-  </div>
-</section>
-
-<section id="contact" class="contact">
-  <div class="contact-inner">
-    <div class="section-meta">06 / CONTACT</div>
-    <h2 class="contact-title reveal">Have something<br><em>worth building?</em></h2>
-    <p class="contact-intro reveal">Tell me what you're working on. Include your company or organisation if relevant, and I'll get back to you.</p>
-    <form id="contactForm" class="contact-form reveal">
-      <label><span>Name</span><input name="name" required placeholder="Your name"></label>
-      <label><span>Email</span><input name="email" type="email" required placeholder="you@company.com"></label>
-      <label><span>Company / Organisation</span><input name="company" placeholder="Optional"></label>
-      <label class="wide"><span>Message</span><textarea name="message" rows="5" required placeholder="Tell me about the project or opportunity..."></textarea></label>
-      <button class="btn primary magnetic" type="submit">Send enquiry <span>↗</span></button>
-      <p id="formStatus"></p>
-    </form>
-    <div class="contact-links"><a href="mailto:ayusmanpradhan1306@gmail.com">ayusmanpradhan1306@gmail.com ↗</a><a href="https://github.com/TechNerd13-hub" target="_blank" rel="noopener">GitHub ↗</a><a href="https://www.linkedin.com/in/ayusman-pradhan-425b21329" target="_blank" rel="noopener">LinkedIn ↗</a></div>
-  </div>
-</section>
 </main>
-<footer><span>© 2026 Ayusman Pradhan</span><span>FULL STACK DEVELOPER · BHUBANESWAR, INDIA</span></footer>
-<script src="js/script.js"></script>
-</body></html>
+
+<div class="ctx-hint">windows open · drag to move · double-click title bar to maximize</div>
+
+<nav id="dock">
+  <div class="dock-item" data-open="folder" title="Ayusman_Pradhan">📁</div>
+  <div class="dock-item" data-open="about" title="About">◐</div>
+  <div class="dock-item" data-open="pocketpilot" title="PocketPilot">PP</div>
+  <div class="dock-item" data-open="voyara" title="Voyara">VY</div>
+  <div class="dock-item" data-open="aerocast" title="Aerocast">AC</div>
+  <div class="dock-sep"></div>
+  <div class="dock-item" data-open="skills" title="Skills">SK</div>
+  <div class="dock-item" data-open="credentials" title="Credentials">★</div>
+  <div class="dock-sep"></div>
+  <div class="dock-item dock-ai" data-open="ai" title="Ask AI">✦</div>
+  <div class="dock-item" data-open="resume" title="Resume">⇩</div>
+  <div class="dock-item" data-open="contact" title="Contact">✉</div>
+</nav>
+</div>
+<!-- /#osView -->
+
+<!-- ================= WINDOW CONTENTS ================= -->
+
+<template id="tpl-about">
+  <span class="win-kicker">01 · IDENTITY</span>
+  <div class="about-avatar">
+    <img src="image/profile-headshot.jpg" alt="Ayusman Pradhan">
+    <div><div class="aa-name">Ayusman Pradhan</div><div class="aa-role">Full Stack Developer · CSE Student</div></div>
+  </div>
+  <h2>Curious about how things work.<br><em>Serious about making them work.</em></h2>
+  <div class="editor-lines">
+    <p>I'm a Computer Science Engineering student (ITER, SOA University, Bhubaneswar) building full-stack products, mobile apps and practical software.</p>
+    <p>I like turning ideas into working products — from the first interface sketch to the logic behind it and the final deployment.</p>
+    <p>Public speaking and debate taught me how to research quickly, structure ideas and communicate clearly — skills that carry straight into product thinking.</p>
+    <p>Currently building PocketPilot, and open to full-stack / mobile internship opportunities.</p>
+  </div>
+  <div class="win-chip-row"><span>React</span><span>React Native</span><span>Django</span><span>Python</span><span>Bhubaneswar, India</span></div>
+</template>
+
+<template id="tpl-pocketpilot">
+  <span class="win-kicker">ANDROID · FINTECH</span>
+  <h2>PocketPilot</h2>
+  <p>A personal finance app built around the payment itself: track expenses, initiate UPI payments through the apps you already use, and organise spending automatically by source and category.</p>
+  <div class="app-shot"><img src="assets/pocketpilot-dashboard.jpeg" alt="PocketPilot dashboard"></div>
+  <div class="win-chip-row"><span>React Native</span><span>Expo</span><span>UPI flow</span><span>Expense tracking</span></div>
+  <a class="win-btn" href="projects/pocketpilot.html">Open full case study ↗</a>
+</template>
+
+<template id="tpl-voyara">
+  <span class="win-kicker">REACT · TRAVEL</span>
+  <h2>Voyara</h2>
+  <p>A modern travel explorer built around curated journeys, recommendation scoring, multi-currency filtering and motion-led discovery.</p>
+  <div class="app-shot browser-frame">
+    <div class="browser-bar"><i></i><i></i><i></i></div>
+    <div style="padding:34px 18px;text-align:center;background:linear-gradient(135deg,#eef0ff,#dfe3ff)">
+      <strong style="font:800 26px 'IBM Plex Mono';letter-spacing:-.02em">VOYARA</strong>
+      <div style="font-size:11px;letter-spacing:.15em;margin-top:8px;color:#54524a">TRAVEL EXPLORER · DISCOVER DIFFERENT</div>
+    </div>
+  </div>
+  <div class="win-chip-row"><span>React</span><span>Vite</span><span>Framer Motion</span></div>
+  <a class="win-btn" href="https://voyara-travel-explorer.vercel.app/" target="_blank" rel="noopener">Open live project ↗</a>
+</template>
+
+<template id="tpl-aerocast">
+  <span class="win-kicker">JAVASCRIPT · WEATHER</span>
+  <h2>Aerocast</h2>
+  <p>A responsive weather experience focused on fast access to useful conditions, built with a clean, lightweight interface.</p>
+  <div class="app-shot browser-frame">
+    <div class="browser-bar"><i></i><i></i><i></i></div>
+    <div style="padding:34px 18px;text-align:center;background:linear-gradient(135deg,#fff6e0,#ffe8b8)">
+      <strong style="font:800 42px 'IBM Plex Mono'">24°</strong>
+      <div style="font-size:11px;letter-spacing:.15em;margin-top:8px;color:#54524a">WEATHER EXPERIENCE · LIVE</div>
+    </div>
+  </div>
+  <div class="win-chip-row"><span>JavaScript</span><span>Weather API</span><span>GitHub Pages</span></div>
+  <a class="win-btn" href="https://technerd13-hub.github.io/Aerocast/" target="_blank" rel="noopener">Open live project ↗</a>
+</template>
+
+<template id="tpl-skills">
+  <span class="win-kicker">02 · SYSTEM</span>
+  <h2>Installed <em>capabilities.</em></h2>
+  <div class="skill-row"><div><div class="sk-name">Python</div><div class="sk-cat">development</div></div><div class="toggle"></div></div>
+  <div class="skill-row"><div><div class="sk-name">JavaScript</div><div class="sk-cat">development</div></div><div class="toggle"></div></div>
+  <div class="skill-row"><div><div class="sk-name">React / React Native</div><div class="sk-cat">development</div></div><div class="toggle"></div></div>
+  <div class="skill-row"><div><div class="sk-name">Django</div><div class="sk-cat">development</div></div><div class="toggle"></div></div>
+  <div class="skill-row"><div><div class="sk-name">HTML5 / CSS3</div><div class="sk-cat">development</div></div><div class="toggle"></div></div>
+  <div class="skill-row"><div><div class="sk-name">Git &amp; GitHub</div><div class="sk-cat">tools</div></div><div class="toggle"></div></div>
+  <div class="skill-row"><div><div class="sk-name">Vercel · REST APIs</div><div class="sk-cat">tools</div></div><div class="toggle"></div></div>
+  <div class="skill-row"><div><div class="sk-name">Public Speaking &amp; Debate</div><div class="sk-cat">people</div></div><div class="toggle"></div></div>
+</template>
+
+<template id="tpl-credentials">
+  <span class="win-kicker">03 · VERIFIED</span>
+  <h2>Certifications &amp; <em>achievements.</em></h2>
+  <div class="cred-row" data-kind="cert"><div class="cred-glyph">GA</div><div><h4>Generative AI Mastermind</h4><small>OutSkill · Certification</small></div></div>
+  <div class="cred-row" data-kind="cert"><div class="cred-glyph">CC</div><div><h4>Claude Code in Action</h4><small>Anthropic · Certification</small></div></div>
+  <div class="cred-row" data-kind="award"><div class="cred-glyph">01</div><div><h4>District-Level Debate Champion</h4><small>Competitive public speaking &amp; debate</small></div></div>
+  <div class="cred-row" data-kind="award"><div class="cred-glyph">02</div><div><h4>State-Level Debate Award Winner</h4><small>Competitive public speaking &amp; debate</small></div></div>
+</template>
+
+<template id="tpl-resume">
+  <span class="win-kicker">FILE</span>
+  <h2>Resume.pdf</h2>
+  <div class="pdf-chrome">
+    <div class="pdf-icon">PDF</div>
+    <p style="margin:0 0 18px">Ayusman Pradhan — Full Stack Developer<br>Updated 2026</p>
+    <a class="win-btn" href="assets/Ayusman_Pradhan_Resume.pdf" target="_blank" rel="noopener">Open resume ↗</a>
+  </div>
+</template>
+
+<template id="tpl-contact">
+  <span class="win-kicker">04 · COMPOSE</span>
+  <h2>Have something<br><em>worth building?</em></h2>
+  <p>Tell me what you're working on — I'll get back to you.</p>
+  <form id="osContactForm" class="compose">
+    <label>To</label>
+    <input value="ayusmanpradhan1306@gmail.com" disabled>
+    <label>From (your name)</label>
+    <input name="name" required placeholder="Your name">
+    <label>Reply-to (your email)</label>
+    <input name="email" type="email" required placeholder="you@company.com">
+    <label>Message</label>
+    <textarea name="message" rows="5" required placeholder="Tell me about the project or opportunity..."></textarea>
+    <div style="margin-top:16px"><button class="win-btn" type="submit">Send enquiry ↗</button></div>
+    <p id="osFormStatus"></p>
+  </form>
+  <div class="win-chip-row" style="margin-top:22px">
+    <a href="https://github.com/TechNerd13-hub" target="_blank" rel="noopener">GitHub ↗</a>
+    <a href="https://www.linkedin.com/in/ayusman-pradhan-425b21329" target="_blank" rel="noopener">LinkedIn ↗</a>
+  </div>
+</template>
+
+<template id="tpl-folder">
+  <span class="win-kicker">FOLDER · 6 ITEMS</span>
+  <h2>Ayusman_Pradhan<em>/</em></h2>
+  <p>Everything about me, filed away. Double-click anything to open it.</p>
+  <div class="folder-grid">
+    <div class="folder-file" data-open="about"><div class="ff-icon" style="background:#3d5afe;color:#fff">◐</div><span>About.txt</span></div>
+    <div class="folder-file" data-open="resume"><div class="ff-icon" style="background:#ff5d5d;color:#fff">PDF</div><span>Resume.pdf</span></div>
+    <div class="folder-file" data-open="skills"><div class="ff-icon" style="background:#00c48c">SK</div><span>Skills.sys</span></div>
+    <div class="folder-file" data-open="credentials"><div class="ff-icon" style="background:var(--mustard)">★</div><span>Credentials.cert</span></div>
+    <div class="folder-file" data-open="pocketpilot"><div class="ff-icon" style="background:var(--ink);color:#fff">PP</div><span>PocketPilot.app</span></div>
+    <div class="folder-file" data-open="contact"><div class="ff-icon" style="background:#eee;border:2px solid var(--ink)">✉</div><span>Contact.app</span></div>
+  </div>
+</template>
+
+<template id="tpl-ai">
+  <span class="win-kicker">✦ ASK_AI · LOCAL, NO DATA LEAVES THIS PAGE</span>
+  <h2>Ask me <em>anything.</em></h2>
+  <p>A small offline assistant trained on one dataset: me. Try a question below.</p>
+  <div class="ai-chips">
+    <button type="button" class="ai-chip">What are your skills?</button>
+    <button type="button" class="ai-chip">Tell me about PocketPilot</button>
+    <button type="button" class="ai-chip">How can I contact you?</button>
+    <button type="button" class="ai-chip">Are you open to internships?</button>
+  </div>
+  <div class="ai-log" id="aiLog">
+    <div class="ai-msg bot"><div class="ai-avatar">AI</div><div class="ai-bubble">Hey — I'm a tiny rule-based assistant, not a live model. Ask about Ayusman's skills, projects, certifications or how to reach him.</div></div>
+  </div>
+  <form id="aiForm" class="ai-input-row">
+    <input id="aiInput" type="text" placeholder="Ask a question…" autocomplete="off">
+    <button class="win-btn" type="submit">Send</button>
+  </form>
+</template>
+
+<script src="js/os.js"></script>
+</body>
+</html>

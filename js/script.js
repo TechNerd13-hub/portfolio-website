@@ -119,7 +119,7 @@ document.getElementById("contactForm")?.addEventListener("submit",e=>{
 });
 
 /* Navigation section highlighting */
-const sections=["about","work","skills","contact"]
+const sections=["about","work","skills","credentials","contact"]
   .map(id=>document.getElementById(id))
   .filter(Boolean);
 
@@ -144,3 +144,120 @@ if(pocketPilot){
   },{threshold:.18});
   pocketObserver.observe(pocketPilot);
 }
+
+/* =========================================================
+   KINETIC BRAND NAME — wrap letters for hover wave
+   ========================================================= */
+(function wrapBrandLetters(){
+  const el=document.querySelector(".brand span");
+  if(!el) return;
+  const text=el.textContent;
+  el.innerHTML="";
+  [...text].forEach((ch,i)=>{
+    const b=document.createElement("b");
+    b.style.setProperty("--i",i);
+    b.textContent=ch===" "?"\u00A0":ch;
+    el.appendChild(b);
+  });
+})();
+
+/* =========================================================
+   INTRO LOADER — multilingual greeting + iris reveal
+   ========================================================= */
+(function initIntro(){
+  const loader=document.getElementById("introLoader");
+  if(!loader) return;
+  const reduceMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const seen=sessionStorage.getItem("ap-intro-seen");
+
+  const finish=()=>{
+    document.documentElement.classList.remove("intro-lock");
+    loader.classList.add("intro-exit");
+    sessionStorage.setItem("ap-intro-seen","1");
+    setTimeout(()=>loader.classList.add("intro-hidden"),1150);
+  };
+
+  if(seen || reduceMotion){
+    loader.classList.add("intro-hidden");
+    document.documentElement.classList.remove("intro-lock");
+    return;
+  }
+
+  document.documentElement.classList.add("intro-lock");
+  const wordEl=loader.querySelector(".intro-word");
+  const nameEl=loader.querySelector(".intro-name");
+  const words=["Hello","नमस्ते","こんにちは","Bonjour","안녕하세요","¡Hola!"];
+  let i=0,timer=null,skipped=false;
+
+  const showWord=()=>{
+    wordEl.textContent=words[i];
+    wordEl.classList.remove("pop");
+    void wordEl.offsetWidth;
+    wordEl.classList.add("pop");
+    i++;
+    if(i<words.length){
+      timer=setTimeout(showWord,360);
+    }else{
+      timer=setTimeout(showName,360);
+    }
+  };
+
+  const showName=()=>{
+    wordEl.style.display="none";
+    const full="AYUSMAN PRADHAN";
+    nameEl.innerHTML="";
+    [...full].forEach((ch,idx)=>{
+      const span=document.createElement("span");
+      span.style.setProperty("--i",idx);
+      if(ch===" "){span.className="space";span.textContent="\u00A0";}
+      else span.textContent=ch;
+      nameEl.appendChild(span);
+    });
+    nameEl.classList.add("show");
+    timer=setTimeout(()=>{ if(!skipped) finish(); },full.length*38+700);
+  };
+
+  const skip=()=>{
+    if(skipped) return;
+    skipped=true;
+    clearTimeout(timer);
+    finish();
+  };
+
+  loader.querySelector(".intro-skip")?.addEventListener("click",skip);
+  loader.addEventListener("click",e=>{ if(e.target.closest(".intro-skip"))return; skip(); });
+  window.addEventListener("keydown",skip,{once:true});
+
+  showWord();
+})();
+
+/* =========================================================
+   CREDENTIAL CARD TILT
+   ========================================================= */
+if(hasFinePointer){
+  document.querySelectorAll(".credential-card").forEach(card=>{
+    card.addEventListener("pointermove",e=>{
+      const r=card.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width-.5;
+      const py=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(700px) rotateX(${(-py*8).toFixed(2)}deg) rotateY(${(px*10).toFixed(2)}deg) translateY(-3px)`;
+    });
+    card.addEventListener("pointerleave",()=>{ card.style.transform=""; });
+  });
+}
+
+/* =========================================================
+   SMOOTH INTERNAL PAGE TRANSITIONS
+   ========================================================= */
+document.querySelectorAll('a[href]').forEach(a=>{
+  const href=a.getAttribute("href");
+  if(!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return;
+  if(a.target==="_blank" || a.hasAttribute("download")) return;
+  if(/^https?:\/\//i.test(href)) return;
+  a.addEventListener("click",e=>{
+    if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
+    e.preventDefault();
+    document.body.classList.add("page-leave");
+    setTimeout(()=>{ window.location.href=href; },330);
+  });
+});
