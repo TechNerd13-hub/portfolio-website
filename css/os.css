@@ -434,52 +434,71 @@ html[data-os-theme="dark"] #ambient .ambient-star{display:block}
   .hero-eyebrow,.hl,.hero-quote,.hero-enter,.hero-photo,.hero-tag{animation:none;opacity:1;transform:none}
 }
 
-/* ---------- FINAL MOBILE DASHBOARD: TWO FIXED ROWS ---------- */
-.mobile-dock-row{display:contents}
-@media(max-width:700px){
+/* ===== MOBILE OS DOCK — 2 ROWS / 5 APPS, MOBILE ONLY ===== */
+@media (max-width:700px){
   #dock{
-    left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));
-    width:auto;max-width:none;transform:none;
-    display:flex;flex-direction:column;gap:6px;
-    padding:8px;
-    border-radius:18px;
-    overflow:hidden;
-    touch-action:manipulation;
-    box-sizing:border-box;
+    position:fixed !important;
+    left:0 !important;
+    right:0 !important;
+    bottom:0 !important;
+    transform:none !important;
+    width:100vw !important;
+    max-width:none !important;
+    box-sizing:border-box !important;
+    display:grid !important;
+    grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+    grid-template-rows:repeat(2,1fr) !important;
+    align-items:center !important;
+    justify-items:center !important;
+    gap:6px !important;
+    padding:8px 10px calc(8px + env(safe-area-inset-bottom)) !important;
+    border-radius:16px 16px 0 0 !important;
+    z-index:100 !important;
+    overflow:hidden !important;
   }
-  #dock .mobile-dock-row{
-    display:grid;
-    grid-template-columns:repeat(5,minmax(0,1fr));
-    gap:6px;
-    width:100%;
-    min-width:0;
-  }
-  #dock .dock-sep{display:none}
+
+  /* separators are desktop-only; hiding them gives exactly 5 apps per row */
+  #dock .dock-sep{display:none !important}
+
   #dock .dock-item{
-    position:relative;
-    width:100%;min-width:0;height:52px;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:3px;padding:3px 2px 2px;
-    box-sizing:border-box;
-    border-radius:10px;
-    font-size:12px;line-height:1;
-    overflow:hidden;
-    flex:none;
+    width:100% !important;
+    max-width:58px !important;
+    min-width:0 !important;
+    height:48px !important;
+    min-height:48px !important;
+    box-sizing:border-box !important;
+    border-radius:11px !important;
+    font-size:12px !important;
+    line-height:1 !important;
+    margin:0 !important;
   }
-  #dock .dock-item::after{
-    content:attr(data-mobile-label);
-    display:block;
-    width:100%;
-    font:700 7px/1.05 "IBM Plex Mono",monospace;
-    letter-spacing:-.02em;
-    text-align:center;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+
+  #dock .dock-item:hover{transform:none !important;box-shadow:none !important}
+  #dock .dock-item.running:after{bottom:-5px !important;width:4px !important;height:4px !important}
+
+  /* The desktop workspace ends above the two-row mobile dock. */
+  #desktop,
+  #ambient{
+    bottom:132px !important;
   }
-  #dock .dock-item:hover{transform:none;box-shadow:none}
-  #dock .dock-item.dock-ai::before{inset:-3px;border-radius:13px}
-  #desktop{inset:38px 0 calc(132px + env(safe-area-inset-bottom)) 0}
-  #ambient{inset:38px 0 calc(132px + env(safe-area-inset-bottom)) 0}
-  .win,.win.maximized{bottom:calc(132px + env(safe-area-inset-bottom))!important}
+
+  /* Open windows also stop above the mobile dock. */
+  .win,
+  .win.maximized{
+    left:8px !important;
+    right:8px !important;
+    top:46px !important;
+    bottom:140px !important;
+    width:auto !important;
+    height:auto !important;
+    max-width:none !important;
+    max-height:none !important;
+    min-width:0 !important;
+  }
+
+  .win-body{
+    min-height:0 !important;
+    overflow:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+  }
 }
