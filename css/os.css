@@ -251,7 +251,7 @@ html[data-os-theme="dark"] #ambient .ambient-star{display:block}
 }
 .win-btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 rgba(0,0,0,.3)}
 .win-btn.ghost{background:transparent;color:var(--ink)}
-
+@media(max-width:700px){.win,.win.maximized{position:fixed!important;left:8px!important;right:8px!important;top:46px!important;bottom:calc(70px + env(safe-area-inset-bottom))!important;width:auto!important;min-width:0!important;max-width:none!important;height:auto!important;max-height:none!important}.win-bar{cursor:default;touch-action:none}.win-body{min-height:0;-webkit-overflow-scrolling:touch;touch-action:pan-y;padding:18px 16px calc(20px + env(safe-area-inset-bottom))}.win-body h2{font-size:clamp(28px,8.5vw,38px)}.compose input,.compose textarea{font-size:16px}}
 
 /* --- App: PROJECT (phone/browser mock) --- */
 .app-shot{border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:16px 0;box-shadow:4px 4px 0 rgba(0,0,0,.2)}
@@ -423,114 +423,41 @@ html[data-os-theme="dark"] #ambient .ambient-star{display:block}
   .hero-quote{margin-left:auto;margin-right:auto}
   .hero-photo{width:150px;height:150px}
 }
-
+@media(max-width:700px){#heroView,#osView{height:100dvh;min-height:100svh}.hero-inner{height:100%;min-height:100svh;padding:18px 6vw calc(18px + env(safe-area-inset-bottom));gap:22px}.hero-photo{width:min(150px,38vw);height:min(150px,38vw)}.hero-name{font-size:clamp(32px,10vw,52px)}.hero-quote{font-size:17px;line-height:1.45;margin-top:18px}.hero-enter{margin-top:22px;padding:13px 20px}}
 @media(prefers-reduced-motion:reduce){
   .hero-eyebrow,.hl,.hero-quote,.hero-enter,.hero-photo,.hero-tag{animation:none;opacity:1;transform:none}
 }
 
+@media(max-width:700px){html,body{width:100%;min-width:0;overflow:hidden;overscroll-behavior:none}#desktop{inset:38px 0 calc(62px + env(safe-area-inset-bottom)) 0;overflow:visible}.desktop-hero{top:3vh;left:6vw;right:6vw}.desktop-hero h1{font-size:clamp(34px,10vw,54px)}.desktop-hero p{font-size:12px;line-height:1.6}.desktop-hero .dh-hint{display:none}}
 
-/* ================================================================
-   RESPONSIVE MOBILE LAYER
-   Desktop layout/behaviour above is intentionally left unchanged.
-   ================================================================ */
-@media (max-width:700px){
-  :root{--mobile-gutter:8px;--mobile-dock:64px}
-  html,body{width:100%;height:100%;min-width:0;overflow:hidden;overscroll-behavior:none}
-
-  /* Menu bar */
-  #menubar{height:38px;padding:0 9px;gap:8px}
-  #menubar .mb-left,#menubar .mb-right{min-width:0;gap:7px}
-  #menubar .mb-item{display:none}
-  #menubar .mb-logo{min-width:0;max-width:45vw}
-  #menubar .mb-logo .mb-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  #menubar .mb-status{display:none}
-  #menubar #mbClock{font-size:9px;letter-spacing:0;white-space:nowrap}
-  #menubar .mb-theme{width:23px;height:23px;flex:0 0 23px}
-
-  /* Desktop canvas / OS workspace */
-  #osView{height:100dvh;min-height:100svh;overflow:hidden}
-  #desktop{position:absolute;inset:38px 0 calc(var(--mobile-dock) + env(safe-area-inset-bottom)) 0;overflow:hidden}
-  #ambient{inset:38px 0 calc(var(--mobile-dock) + env(safe-area-inset-bottom)) 0}
-  .desktop-hero{left:7vw;right:7vw;top:4vh;max-width:none}
-  .desktop-hero h1{font-size:clamp(34px,10vw,54px);line-height:1.02}
-  .desktop-hero p{font-size:12px;line-height:1.6}
-  .desktop-hero .dh-hint{display:none}
-  .desk-icon{display:none}
-
-  /* Dock: never clip it; allow a natural horizontal touch scroll. */
+/* ---------- MOBILE DASHBOARD / DOCK ---------- */
+@media(max-width:700px){
   #dock{
-    position:fixed;left:50%;right:auto;bottom:calc(7px + env(safe-area-inset-bottom));
-    width:calc(100vw - 12px);max-width:calc(100vw - 12px);
-    transform:translateX(-50%);z-index:70;
-    display:flex;align-items:flex-end;justify-content:flex-start;
-    gap:7px;padding:8px 10px;
-    overflow-x:auto;overflow-y:hidden;scrollbar-width:none;
-    -webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x;
-    box-sizing:border-box;
+    left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));
+    width:auto;max-width:none;transform:none;
+    display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+    grid-auto-rows:54px;gap:7px;padding:9px 8px;
+    align-items:center;justify-items:stretch;
+    overflow:visible;
+    border-radius:18px;
+    touch-action:manipulation;
   }
-  #dock::-webkit-scrollbar{display:none}
-  .dock-item{width:42px;height:42px;min-width:42px;font-size:13px}
-  .dock-sep{width:2px;min-width:2px}
-  .dock-item:hover{transform:none;box-shadow:none}
-
-  /* Every opened app becomes a phone-sized OS window. */
-  .win,
-  .win.maximized{
-    position:fixed!important;
-    left:var(--mobile-gutter)!important;
-    right:var(--mobile-gutter)!important;
-    top:46px!important;
-    bottom:calc(var(--mobile-dock) + 8px + env(safe-area-inset-bottom))!important;
-    width:auto!important;
-    min-width:0!important;
-    max-width:none!important;
-    height:auto!important;
-    max-height:none!important;
-    margin:0!important;
-    border-radius:12px;
-    transform:none;
+  #dock .dock-sep{display:none}
+  #dock .dock-item{
+    width:100%;min-width:0;height:54px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:2px;padding:3px 2px 2px;
+    border-radius:10px;font-size:12px;line-height:1;
   }
-  .win-bar{min-height:38px;padding:9px 10px;gap:8px;cursor:default;touch-action:none}
-  .win-dots{gap:6px;flex:0 0 auto}
-  .win-dots button{width:13px;height:13px;min-width:13px;min-height:13px}
-  .win-title{font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .win-body{
-    min-height:0;padding:18px 15px calc(20px + env(safe-area-inset-bottom));
-    overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
-    touch-action:pan-y;scrollbar-width:thin;
+  #dock .dock-item::after{
+    content:attr(data-mobile-label);display:block;
+    font:700 7px/1.05 "IBM Plex Mono",monospace;
+    letter-spacing:-.01em;text-align:center;white-space:nowrap;
+    max-width:100%;overflow:hidden;text-overflow:ellipsis;
   }
-  .win-body h2{font-size:clamp(27px,8.5vw,38px);line-height:1.05;margin-bottom:13px}
-  .win-body p{font-size:13px;line-height:1.72}
-  .win-chip-row{gap:6px}
-  .win-chip-row span{font-size:9px;padding:5px 8px}
-  .win-btn{max-width:100%;white-space:normal;line-height:1.35}
-  .app-shot{max-width:100%}
-  .compose input,.compose textarea,.ai-input{font-size:16px}
-
-  /* Mobile hero */
-  #heroView{height:100dvh;min-height:100svh}
-  .hero-inner{height:100%;min-height:100svh;padding:18px 7vw calc(18px + env(safe-area-inset-bottom));gap:22px}
-  .hero-photo{width:min(150px,38vw);height:min(150px,38vw)}
-  .hero-name{font-size:clamp(32px,10vw,52px);line-height:1}
-  .hero-quote{font-size:16px;line-height:1.5;margin-top:16px}
-  .hero-enter{margin-top:20px;padding:12px 18px}
-  .hero-tags{gap:6px}
-  .hero-tag{font-size:9px;padding:5px 10px}
-}
-
-@media (max-width:380px){
-  .hero-inner{padding-left:5vw;padding-right:5vw}
-  .hero-photo{width:126px;height:126px}
-  .win-body{padding-left:13px;padding-right:13px}
-  .win-body p{font-size:12.5px}
-  #menubar #mbClock{font-size:8px}
-}
-
-@media (max-width:700px) and (orientation:landscape){
-  .hero-inner{flex-direction:row;justify-content:center;text-align:left;gap:5vw;padding:12px 5vw}
-  .hero-text{max-width:55vw}
-  .hero-name{align-items:flex-start}
-  .hero-quote{margin-left:0;margin-right:0}
-  .hero-photo-col{gap:10px}
-  .hero-photo{width:min(34vh,130px);height:min(34vh,130px)}
+  #dock .dock-item.dock-ai::before{inset:-3px;border-radius:13px}
+  #dock .dock-item:hover{transform:none;box-shadow:none}
+  #desktop{inset:38px 0 calc(144px + env(safe-area-inset-bottom)) 0}
+  #ambient{inset:38px 0 calc(144px + env(safe-area-inset-bottom)) 0}
+  .win,.win.maximized{bottom:calc(144px + env(safe-area-inset-bottom))!important}
 }
