@@ -302,7 +302,7 @@
     win.className="win";
     win.dataset.id=id;
     const titleMap={
-      about:"About.txt", pocketpilot:"PocketPilot.app", voyara:"Voyara.app", aerocast:"Aerocast.app",
+      about:"About.txt", pocketpilot:"PocketPilot.app", voyara:"Voyara.app", aerocast:"Aerocast.app", tavryx:"Tavryx.app",
       skills:"Skills.sys", credentials:"Credentials.cert", resume:"Resume.pdf", contact:"Contact.app",
       folder:"Ayusman_Pradhan/", ai:"Ask_AI.app"
     };
